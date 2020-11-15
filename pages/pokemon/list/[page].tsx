@@ -16,13 +16,16 @@ const StyleButton = styled(Button)`
 
 const StyledTable = styled(Table)`
   margin: 3rem;
+  table {
+    width: calc(100% - 6rem);
+  }
 `;
 
 export default function List() {
   const router = useRouter();
   const { page } = router.query;
   const [result, setResult] = useState<IPokemonList>(null);
-  const headers = ["#", "Image", "Name", "Actions"];
+  const headers = ["#", "Pokémon", "Actions"];
 
   useEffect(() => {
     const limit = 10;
@@ -40,8 +43,10 @@ export default function List() {
           headers={headers}
           data={result.results.map((r) => [
             r.id,
-            renderImage(r.sprite),
-            r.name,
+            <>
+              {renderImage(r.sprite)}
+              {r.name}
+            </>,
             renderDetailButton(r.id),
           ])}
         />
