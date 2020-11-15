@@ -51,7 +51,7 @@ export default function Home() {
   );
 
   function handleClickStart() {
-    Router.push("/pokemon/List");
+    Router.push("/pokemon/list/0");
   }
 
   function handleClickExit() {

@@ -1,6 +1,6 @@
 interface IProps {
   headers: string[];
-  data: string[][];
+  data: any[][];
   className?: string;
 }
 
