@@ -1,6 +1,6 @@
 import { Button, Container } from "../components";
 import styled from "styled-components";
-import Router from 'next/router'
+import Router from "next/router";
 
 const StyledContainer = styled(Container)`
   margin-left: 3rem;
@@ -42,17 +42,20 @@ export default function Home() {
         </p>
       </div>
       <div>
-        <StyleButton onClick={handleClickStart} type="primary">Start</StyleButton>
+        <StyleButton onClick={handleClickStart} type="primary">
+          Start
+        </StyleButton>
         <Button onClick={handleClickExit}>Exit</Button>
       </div>
     </StyledContainer>
   );
 
   function handleClickStart() {
-    Router.push('/pokemon/List')
+    Router.push("/pokemon/List");
   }
 
   function handleClickExit() {
-    document.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO";
+    document.location.href =
+      "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO";
   }
 }
