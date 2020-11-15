@@ -1,6 +1,6 @@
 import { Button, Container, Table, Text } from "../../../components";
 import styled from "styled-components";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { IPokemonList, listPokemon } from "../../../services";
 
@@ -22,7 +22,7 @@ export default function List() {
   const router = useRouter();
   const { page } = router.query;
   const [result, setResult] = useState<IPokemonList>(null);
-  const headers = ["#", "Name", "Actions"];
+  const headers = ["#", "Image", "Name", "Actions"];
 
   useEffect(() => {
     const limit = 10;
@@ -40,6 +40,7 @@ export default function List() {
           headers={headers}
           data={result.results.map((r) => [
             r.id,
+            renderImage(r.sprite),
             r.name,
             renderDetailButton(r.id),
           ])}
@@ -70,6 +71,10 @@ export default function List() {
 
   function handleClickExit() {
     router.back();
+  }
+
+  function renderImage(sprite: string) {
+    return <img width={64} height={64} src={sprite} />;
   }
 
   function renderDetailButton(id: number) {
