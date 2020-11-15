@@ -26,8 +26,7 @@ export default function List() {
 
   useEffect(() => {
     const limit = 10;
-    const offset = (page || 0) * limit;
-    listPokemon(limit, parseInt("" + offset)).then(setResult);
+    listPokemon(limit, parseInt("" + page || 0) * limit).then(setResult);
   }, [page]);
 
   if (!result) {
