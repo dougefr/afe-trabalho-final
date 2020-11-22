@@ -15,7 +15,7 @@ export interface IPokemonDetail {
   sprites: {
     front_default: string;
     other: {
-      dream_world: {
+      "official-artwork": {
         front_default: string;
       };
     };
@@ -55,16 +55,23 @@ export default class PokemonService {
     const { data } = await Axios.get<IPokemonList>(
       `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
     );
+
     for (let i = 0; i < data.results.length; i++) {
-      const pokemon = await this.getPokemon(offset + i + 1);
-      data.results[i].sprite = pokemon.sprites.front_default;
+      try {
+        const pokemon = await this.getPokemon(offset + i + 1);
+        data.results[i].sprite = pokemon.sprites.front_default;
+      } catch (err) {
+        console.error(err);
+      }
     }
 
     return {
       ...data,
-      results: data.results.map((r, i) => {
-        return { ...r, id: offset + i + 1 };
-      }),
+      results: data.results
+        .filter((r) => r.sprite)
+        .map((r, i) => {
+          return { ...r, id: offset + i + 1 };
+        }),
     };
   }
 

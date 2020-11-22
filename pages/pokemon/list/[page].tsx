@@ -40,13 +40,18 @@ export default function List() {
   const router = useRouter();
   const { page } = router.query;
   const [result, setResult] = useState<IPokemonList>(null);
+  const [loading, setLoading] = useState<Boolean>(true);
   const headers = ["#", "Pokémon", "Actions"];
 
   useEffect(() => {
     if (page) {
       const limit = 10;
+      setLoading(true);
       PokemonService.listPokemon(limit, parseInt("" + page) * limit).then(
-        setResult
+        (results) => {
+          setResult(results);
+          setLoading(false);
+        }
       );
     }
   }, [page]);
@@ -60,16 +65,23 @@ export default function List() {
       <StyledButtonContainer>
         <div>
           <StyledButton
-            onClick={handleClientPrevious}
-            type={page === "0" ? "disabled" : "primary"}
+            onClick={loading || page === "0" ? null : handleClientPrevious}
+            type={loading || page === "0" ? "disabled" : "primary"}
           >
             Previous
           </StyledButton>
-          <StyledButton onClick={handleClickNext} type="primary">
+          <StyledButton
+            onClick={
+              loading || result.results.length !== 10 ? null : handleClickNext
+            }
+            type={
+              loading || result.results.length !== 10 ? "disabled" : "primary"
+            }
+          >
             Next
           </StyledButton>
         </div>
-        <Button onClick={handleClickExit}>Exit</Button>
+        <Button onClick={handleClickHome}>Home</Button>
       </StyledButtonContainer>
       <div>
         <StyledTable
@@ -95,7 +107,7 @@ export default function List() {
     router.push(`/pokemon/list/${parseInt("" + page) + 1}`);
   }
 
-  function handleClickExit() {
+  function handleClickHome() {
     router.push("/");
   }
 

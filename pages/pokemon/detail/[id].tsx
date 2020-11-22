@@ -78,10 +78,15 @@ export default function List() {
   const router = useRouter();
   const { id } = router.query;
   const [pokemon, setPokemon] = useState<IPokemonDetail>(null);
+  const [loading, setLoading] = useState<Boolean>(true);
 
   useEffect(() => {
     if (id) {
-      PokemonService.getPokemon(parseInt("" + id)).then(setPokemon);
+      setLoading(true);
+      PokemonService.getPokemon(parseInt("" + id)).then((pokemon) => {
+        setPokemon(pokemon);
+        setLoading(false);
+      });
     }
   }, [id]);
 
@@ -92,7 +97,7 @@ export default function List() {
   return (
     <StyledContainer title="Pokémon Detail">
       <StyledButtonContainer>
-        <Button onClick={handleClickExit}>Back to List</Button>
+        <Button onClick={handleClickList}>List</Button>
       </StyledButtonContainer>
       <StyledPokemonDetail>
         {renderImage()}
@@ -157,12 +162,15 @@ export default function List() {
     return (
       <div className="navButtons">
         <StyledButton
-          onClick={handleClientPrevious}
-          type={id === "1" ? "disabled" : "primary"}
+          onClick={id === "1" || loading ? null : handleClientPrevious}
+          type={id === "1" || loading ? "disabled" : "primary"}
         >
           {"<"}
         </StyledButton>
-        <StyledButton onClick={handleClickNext} type="primary">
+        <StyledButton
+          onClick={id === "893" || loading ? null : handleClickNext}
+          type={id === "893" || loading ? "disabled" : "primary"}
+        >
           {">"}
         </StyledButton>
       </div>
@@ -177,7 +185,7 @@ export default function List() {
     router.push(`/pokemon/detail/${parseInt("" + id) + 1}`);
   }
 
-  function handleClickExit() {
+  function handleClickList() {
     const page = Math.floor(parseInt("" + id) / 10);
     router.push(`/pokemon/list/${page}`);
   }
@@ -188,7 +196,7 @@ export default function List() {
         <img
           width={128}
           height={128}
-          src={pokemon.sprites.other.dream_world.front_default}
+          src={pokemon.sprites.other["official-artwork"].front_default}
         />
         <h3>{pokemon.name}</h3>
         <h3>#{id}</h3>
