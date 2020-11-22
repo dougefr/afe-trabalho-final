@@ -1,8 +1,9 @@
-import { Badge, Button, Container, Text } from "../../../components";
+import { Badge, Button, Container } from "../../../components";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { IPokemonDetail, PokemonService } from "../../../services";
+import { PokemonService } from "../../../services";
+
+import Image from "next/image";
 
 const StyledContainer = styled(Container)`
   margin: 1rem;
@@ -203,7 +204,7 @@ export default function List({ pokemon }) {
         title="Profile"
         className="pokemonCard"
       >
-        <img
+        <Image
           width={128}
           height={128}
           src={pokemon.sprites.other["official-artwork"].front_default}

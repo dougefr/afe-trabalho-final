@@ -1,6 +1,6 @@
 module.exports = {
   images: {
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    imageSizes: [64, 128],
     domains: ["raw.githubusercontent.com"],
   },
 };

@@ -32,7 +32,7 @@ TODO explicar as vantagens
 
 #### axios
 
-Biblioteca amplamente utilizada para realizar requisições HTTP. 
+Biblioteca amplamente utilizada para realizar requisições HTTP.
 
 #### nes.css
 

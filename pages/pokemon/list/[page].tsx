@@ -1,8 +1,9 @@
 import { Button, Container, Table, Text } from "../../../components";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { IPokemonList, PokemonService } from "../../../services";
+import { PokemonService } from "../../../services";
+
+import Image from "next/image";
 
 const StyledContainer = styled(Container)`
   margin: 1rem;
@@ -93,7 +94,7 @@ export default function List({ results }) {
   }
 
   function renderImage(sprite: string) {
-    return <img width={64} height={64} src={sprite} />;
+    return <Image width={64} height={64} src={sprite} />;
   }
 
   function renderDetailButton(id: number) {
