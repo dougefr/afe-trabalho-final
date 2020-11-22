@@ -83,13 +83,17 @@ export default class PokemonService {
     const { data: specie } = await Axios.get<IPokemonSpecie>(
       pokemon.species.url
     );
+
     pokemon.species.text = specie.flavor_text_entries.filter(
       (t) => t.language.name === "en"
     )[0].flavor_text;
-    pokemon.species.text = pokemon.species.text.replaceAll(
-      /[^\w\d\,\.A-zÀ-ú\?\!]/g,
-      " "
-    );
+
+    /*if(pokemon.species.text) {
+      pokemon.species.text = pokemon.species.text.replaceAll(
+        /[^\w\d\,\.A-zÀ-ú\?\!]/g,
+        " "
+      );
+    }*/
 
     return pokemon;
   }

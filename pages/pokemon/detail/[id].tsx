@@ -74,21 +74,9 @@ const StyledButtonContainer = styled.div`
   justify-content: flex-end;
 `;
 
-export default function List() {
+export default function List({ pokemon }) {
   const router = useRouter();
   const { id } = router.query;
-  const [pokemon, setPokemon] = useState<IPokemonDetail>(null);
-  const [loading, setLoading] = useState<Boolean>(true);
-
-  useEffect(() => {
-    if (id) {
-      setLoading(true);
-      PokemonService.getPokemon(parseInt("" + id)).then((pokemon) => {
-        setPokemon(pokemon);
-        setLoading(false);
-      });
-    }
-  }, [id]);
 
   if (!pokemon) {
     return null;
@@ -111,9 +99,15 @@ export default function List() {
 
   function renderType() {
     return (
-      <StyledTypeContainer title="Type" className="pokemonType">
+      <StyledTypeContainer
+        key="pokemonType"
+        title="Type"
+        className="pokemonType"
+      >
         {pokemon.types.map((type) => (
-          <Badge type="primary">{type.type.name}</Badge>
+          <Badge key={type.type.name} type="primary">
+            {type.type.name}
+          </Badge>
         ))}
       </StyledTypeContainer>
     );
@@ -121,7 +115,11 @@ export default function List() {
 
   function renderDescription() {
     return (
-      <StyledWhiteContainer title="Description" className="pokemonDescription">
+      <StyledWhiteContainer
+        key="pokemonDescription"
+        title="Description"
+        className="pokemonDescription"
+      >
         {pokemon.species.text}
       </StyledWhiteContainer>
     );
@@ -129,9 +127,17 @@ export default function List() {
 
   function renderStats() {
     return (
-      <StyledTypeContainer title="Stats" className="pokemonStats">
+      <StyledTypeContainer
+        key="pokemonStats"
+        title="Stats"
+        className="pokemonStats"
+      >
         {pokemon.stats.map((stat) => (
-          <Badge type="primary" title={getStatAbbreviation(stat.stat.name)}>
+          <Badge
+            key={stat.stat.name}
+            type="primary"
+            title={getStatAbbreviation(stat.stat.name)}
+          >
             {stat.base_stat}
           </Badge>
         ))}
@@ -162,14 +168,14 @@ export default function List() {
     return (
       <div className="navButtons">
         <StyledButton
-          onClick={id === "1" || loading ? null : handleClientPrevious}
-          type={id === "1" || loading ? "disabled" : "primary"}
+          onClick={id === "1" ? null : handleClientPrevious}
+          type={id === "1" ? "disabled" : "primary"}
         >
           {"<"}
         </StyledButton>
         <StyledButton
-          onClick={id === "893" || loading ? null : handleClickNext}
-          type={id === "893" || loading ? "disabled" : "primary"}
+          onClick={id === "893" ? null : handleClickNext}
+          type={id === "893" ? "disabled" : "primary"}
         >
           {">"}
         </StyledButton>
@@ -192,7 +198,11 @@ export default function List() {
 
   function renderImage() {
     return (
-      <StyledWhiteContainer title="Profile" className="pokemonCard">
+      <StyledWhiteContainer
+        key="pokemonCard"
+        title="Profile"
+        className="pokemonCard"
+      >
         <img
           width={128}
           height={128}
@@ -203,4 +213,28 @@ export default function List() {
       </StyledWhiteContainer>
     );
   }
+}
+
+export async function getStaticProps({ params }) {
+  const { id } = params;
+  const pokemon = await PokemonService.getPokemon(parseInt("" + id));
+
+  return {
+    props: {
+      pokemon,
+    },
+  };
+}
+
+export async function getStaticPaths() {
+  const paths = [];
+
+  for (let i = 0; i <= 893; i++) {
+    paths.push({ params: { id: "" + i } });
+  }
+
+  return {
+    paths,
+    fallback: true,
+  };
 }

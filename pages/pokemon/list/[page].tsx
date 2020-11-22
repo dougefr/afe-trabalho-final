@@ -36,27 +36,12 @@ const StyledButtonContainer = styled.div`
   justify-content: space-between;
 `;
 
-export default function List() {
+export default function List({ results }) {
   const router = useRouter();
   const { page } = router.query;
-  const [result, setResult] = useState<IPokemonList>(null);
-  const [loading, setLoading] = useState<Boolean>(true);
   const headers = ["#", "Pokémon", "Actions"];
 
-  useEffect(() => {
-    if (page) {
-      const limit = 10;
-      setLoading(true);
-      PokemonService.listPokemon(limit, parseInt("" + page) * limit).then(
-        (results) => {
-          setResult(results);
-          setLoading(false);
-        }
-      );
-    }
-  }, [page]);
-
-  if (!result) {
+  if (!results) {
     return null;
   }
 
@@ -65,18 +50,14 @@ export default function List() {
       <StyledButtonContainer>
         <div>
           <StyledButton
-            onClick={loading || page === "0" ? null : handleClientPrevious}
-            type={loading || page === "0" ? "disabled" : "primary"}
+            onClick={page === "0" ? null : handleClientPrevious}
+            type={page === "0" ? "disabled" : "primary"}
           >
             Previous
           </StyledButton>
           <StyledButton
-            onClick={
-              loading || result.results.length !== 10 ? null : handleClickNext
-            }
-            type={
-              loading || result.results.length !== 10 ? "disabled" : "primary"
-            }
+            onClick={results.length !== 10 ? null : handleClickNext}
+            type={results.length !== 10 ? "disabled" : "primary"}
           >
             Next
           </StyledButton>
@@ -86,7 +67,7 @@ export default function List() {
       <div>
         <StyledTable
           headers={headers}
-          data={result.results.map((r) => [
+          data={results.map((r) => [
             r.id,
             <>
               {renderImage(r.sprite)}
@@ -126,4 +107,33 @@ export default function List() {
   function handleClickDetail(id: number) {
     router.push(`/pokemon/detail/${id}`);
   }
+}
+
+export async function getStaticProps({ params }) {
+  const { page } = params;
+
+  const limit = 10;
+  const results = await PokemonService.listPokemon(
+    limit,
+    parseInt("" + page) * limit
+  );
+
+  return {
+    props: {
+      results: results.results,
+    },
+  };
+}
+
+export async function getStaticPaths() {
+  const paths = [];
+
+  for (let i = 0; i <= 90; i++) {
+    paths.push({ params: { page: "" + i } });
+  }
+
+  return {
+    paths,
+    fallback: true,
+  };
 }
