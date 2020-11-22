@@ -1,30 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Pontifícia Universidade Católica de Minas Gerais
 
-## Getting Started
+**Curso:** Arquitetura de Software Distribuído
 
-First, run the development server:
+**Disciplina:** Arquitetura de Front Ends
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+**Professor:** Samuel Martins
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Alunos:** Douglas Eric Fonseca Rodrigues e Luciano Custódio
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Trabalho final
 
-## Learn More
+### Justificativas das decisões arquiteturais tomadas para este projeto:
 
-To learn more about Next.js, take a look at the following resources:
+#### react
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+O React foi escolhido primeiramente para aproveitamento do know-how dos integrantes do grupo.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+TODO explicar as vantagens de se utilizar react: performance, comunidade (levantar números como estrelas no github, google trends, e comparar com demais), mercado (levantar número de vagas no linkedin e número de pessoas que sabem).
 
-## Deploy on Vercel
+#### next
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+TODO explicar as vantagens de se utilizar SSR
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+#### styled-components
+
+TODO explicar as vantagens de se utilizar CSS-in-JS
+
+#### typescript
+
+TODO explicar as vantagens
+
+#### axios
+
+Biblioteca amplamente utilizada para realizar requisições HTTP. 
+
+#### nes.css
+
+TODO
+
+#### husky
+
+TODO
+
+#### prettier
+
+TODO
