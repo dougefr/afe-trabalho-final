@@ -1,6 +1,6 @@
 import { Button, Container, Table, Text } from "../../../components";
 import styled from "styled-components";
-import { useRouter } from "next/router";
+import Router from "next/router";
 import { PokemonService } from "../../../services";
 
 import Image from "next/image";
@@ -37,9 +37,8 @@ const StyledButtonContainer = styled.div`
   justify-content: space-between;
 `;
 
-export default function List({ results }) {
-  const router = useRouter();
-  const { page } = router.query;
+export default function List({ results, params }) {
+  const { page } = params;
   const headers = ["#", "Pokémon", "Actions"];
 
   if (!results) {
@@ -82,15 +81,15 @@ export default function List({ results }) {
   );
 
   function handleClientPrevious() {
-    router.push(`/pokemon/list/${parseInt("" + page) - 1}`);
+    Router.push(`/pokemon/list/${parseInt("" + page) - 1}`);
   }
 
   function handleClickNext() {
-    router.push(`/pokemon/list/${parseInt("" + page) + 1}`);
+    Router.push(`/pokemon/list/${parseInt("" + page) + 1}`);
   }
 
   function handleClickHome() {
-    router.push("/");
+    Router.push("/");
   }
 
   function renderImage(sprite: string) {

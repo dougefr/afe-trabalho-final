@@ -1,6 +1,6 @@
 import { Badge, Button, Container } from "../../../components";
 import styled from "styled-components";
-import { useRouter } from "next/router";
+import Router from "next/router";
 import { PokemonService } from "../../../services";
 
 import Image from "next/image";
@@ -75,9 +75,8 @@ const StyledButtonContainer = styled.div`
   justify-content: flex-end;
 `;
 
-export default function List({ pokemon }) {
-  const router = useRouter();
-  const { id } = router.query;
+export default function List({ pokemon, params }) {
+  const { id } = params;
 
   if (!pokemon) {
     return null;
@@ -185,16 +184,16 @@ export default function List({ pokemon }) {
   }
 
   function handleClientPrevious() {
-    router.push(`/pokemon/detail/${parseInt("" + id) - 1}`);
+    Router.push(`/pokemon/detail/${parseInt("" + id) - 1}`);
   }
 
   function handleClickNext() {
-    router.push(`/pokemon/detail/${parseInt("" + id) + 1}`);
+    Router.push(`/pokemon/detail/${parseInt("" + id) + 1}`);
   }
 
   function handleClickList() {
     const page = Math.floor(parseInt("" + id) / 10);
-    router.push(`/pokemon/list/${page}`);
+    Router.push(`/pokemon/list/${page}`);
   }
 
   function renderImage() {
