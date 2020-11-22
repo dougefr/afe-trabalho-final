@@ -229,7 +229,7 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   const paths = [];
 
-  for (let i = 0; i <= 893; i++) {
+  for (let i = 1; i <= 893; i++) {
     paths.push({ params: { id: "" + i } });
   }
 
