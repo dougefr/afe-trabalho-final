@@ -28,8 +28,10 @@ export default function List() {
   const headers = ["#", "Pokémon", "Actions"];
 
   useEffect(() => {
-    const limit = 10;
-    listPokemon(limit, parseInt("" + (page || 0)) * limit).then(setResult);
+    if (page) {
+      const limit = 10;
+      listPokemon(limit, parseInt("" + page) * limit).then(setResult);
+    }
   }, [page]);
 
   if (!result) {
@@ -83,6 +85,14 @@ export default function List() {
   }
 
   function renderDetailButton(id: number) {
-    return <Text type="primary">Details</Text>;
+    return (
+      <Text type="primary" onClick={() => handleClickDetail(id)}>
+        Details
+      </Text>
+    );
+  }
+
+  function handleClickDetail(id: number) {
+    router.push(`/pokemon/detail/${id}`);
   }
 }
