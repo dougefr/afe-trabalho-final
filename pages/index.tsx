@@ -3,12 +3,15 @@ import styled from "styled-components";
 import Router from "next/router";
 
 const StyledContainer = styled(Container)`
-  margin-left: 3rem;
-  margin-right: 3rem;
-  margin-top: 5rem;
+  margin: 1rem;
+  background-color: #f7d51d;
+
+  h3 {
+    background-color: #f7d51d !important;
+  }
 `;
 
-const StyleButton = styled(Button)`
+const StyledButton = styled(Button)`
   margin-right: 1rem;
 `;
 
@@ -42,9 +45,9 @@ export default function Home() {
         </p>
       </div>
       <div>
-        <StyleButton onClick={handleClickStart} type="primary">
+        <StyledButton onClick={handleClickStart} type="primary">
           Start
-        </StyleButton>
+        </StyledButton>
         <Button onClick={handleClickExit}>Exit</Button>
       </div>
     </StyledContainer>

@@ -2,23 +2,38 @@ import { Button, Container, Table, Text } from "../../../components";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { IPokemonList, listPokemon } from "../../../services";
+import { IPokemonList, PokemonService } from "../../../services";
 
 const StyledContainer = styled(Container)`
-  margin-left: 3rem;
-  margin-right: 3rem;
-  margin-top: 5rem;
+  margin: 1rem;
+  background-color: #f7d51d;
+
+  h3 {
+    background-color: #f7d51d !important;
+  }
 `;
 
-const StyleButton = styled(Button)`
+const StyledButton = styled(Button)`
   margin-right: 1rem;
 `;
 
 const StyledTable = styled(Table)`
-  margin: 3rem;
+  margin: 1rem;
   table {
-    width: calc(100% - 6rem);
+    width: calc(100% - 2rem);
   }
+  text-align: center;
+`;
+
+const StyledText = styled(Text)`
+  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC)
+      14 0,
+    pointer;
+`;
+
+const StyledButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 export default function List() {
@@ -30,7 +45,9 @@ export default function List() {
   useEffect(() => {
     if (page) {
       const limit = 10;
-      listPokemon(limit, parseInt("" + page) * limit).then(setResult);
+      PokemonService.listPokemon(limit, parseInt("" + page) * limit).then(
+        setResult
+      );
     }
   }, [page]);
 
@@ -39,7 +56,21 @@ export default function List() {
   }
 
   return (
-    <StyledContainer title="Pokémon Search">
+    <StyledContainer title="Pokémon List">
+      <StyledButtonContainer>
+        <div>
+          <StyledButton
+            onClick={handleClientPrevious}
+            type={page === "0" ? "disabled" : "primary"}
+          >
+            Previous
+          </StyledButton>
+          <StyledButton onClick={handleClickNext} type="primary">
+            Next
+          </StyledButton>
+        </div>
+        <Button onClick={handleClickExit}>Exit</Button>
+      </StyledButtonContainer>
       <div>
         <StyledTable
           headers={headers}
@@ -53,18 +84,6 @@ export default function List() {
           ])}
         />
       </div>
-      <div>
-        <StyleButton
-          onClick={handleClientPrevious}
-          type={page === "0" ? "disabled" : "primary"}
-        >
-          Previous
-        </StyleButton>
-        <StyleButton onClick={handleClickNext} type="primary">
-          Next
-        </StyleButton>
-        <Button onClick={handleClickExit}>Exit</Button>
-      </div>
     </StyledContainer>
   );
 
@@ -77,7 +96,7 @@ export default function List() {
   }
 
   function handleClickExit() {
-    router.back();
+    router.push("/");
   }
 
   function renderImage(sprite: string) {
@@ -86,9 +105,9 @@ export default function List() {
 
   function renderDetailButton(id: number) {
     return (
-      <Text type="primary" onClick={() => handleClickDetail(id)}>
+      <StyledText type="primary" onClick={() => handleClickDetail(id)}>
         Details
-      </Text>
+      </StyledText>
     );
   }
 

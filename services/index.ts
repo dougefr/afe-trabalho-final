@@ -1,10 +1,5 @@
-import {
-  IPokemonList,
-  IPokemonDetail,
-  listPokemon,
-  getPokemon,
-} from "./pokemonService";
+import PokemonService, { IPokemonList, IPokemonDetail } from "./PokemonService";
 
 export type { IPokemonList, IPokemonDetail };
 
-export { listPokemon, getPokemon };
+export { PokemonService };

@@ -29,42 +29,58 @@ export interface IPokemonDetail {
       name: string;
     };
   }[];
+  stats: {
+    base_stat: number;
+    effort: number;
+    stat: {
+      name: string;
+    };
+  }[];
 }
 
 interface IPokemonSpecie {
   flavor_text_entries: {
     flavor_text: string;
+    language: {
+      name: string;
+    };
   }[];
 }
 
-export async function listPokemon(
-  limit: number,
-  offset: number
-): Promise<IPokemonList> {
-  const { data } = await Axios.get<IPokemonList>(
-    `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
-  );
+export default class PokemonService {
+  public static async listPokemon(
+    limit: number,
+    offset: number
+  ): Promise<IPokemonList> {
+    const { data } = await Axios.get<IPokemonList>(
+      `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
+    );
+    for (let i = 0; i < data.results.length; i++) {
+      const pokemon = await this.getPokemon(offset + i + 1);
+      data.results[i].sprite = pokemon.sprites.front_default;
+    }
 
-  for (let i = 0; i < data.results.length; i++) {
-    const pokemon = await getPokemon(offset + i + 1);
-    data.results[i].sprite = pokemon.sprites.front_default;
+    return {
+      ...data,
+      results: data.results.map((r, i) => {
+        return { ...r, id: offset + i + 1 };
+      }),
+    };
   }
 
-  return {
-    ...data,
-    results: data.results.map((r, i) => {
-      return { ...r, id: offset + i + 1 };
-    }),
-  };
-}
+  public static async getPokemon(id: number): Promise<IPokemonDetail> {
+    const { data: pokemon } = await Axios.get<IPokemonDetail>(
+      `https://pokeapi.co/api/v2/pokemon/${id}`
+    );
 
-export async function getPokemon(id: number): Promise<IPokemonDetail> {
-  const { data: pokemon } = await Axios.get<IPokemonDetail>(
-    `https://pokeapi.co/api/v2/pokemon/${id}`
-  );
+    const { data: specie } = await Axios.get<IPokemonSpecie>(
+      pokemon.species.url
+    );
+    pokemon.species.text = specie.flavor_text_entries.filter(
+      (t) => t.language.name === "en"
+    )[0].flavor_text;
+    pokemon.species.text = pokemon.species.text.replaceAll(/[^\w\d\,\.]/g, " ");
 
-  const { data: specie } = await Axios.get<IPokemonSpecie>(pokemon.species.url);
-  pokemon.species.text = specie.flavor_text_entries[0].flavor_text;
-
-  return pokemon;
+    return pokemon;
+  }
 }

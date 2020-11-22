@@ -1,6 +1,6 @@
 interface IProps {
   children?: any;
-  title: string;
+  title?: string;
   className?: string;
 }
 
