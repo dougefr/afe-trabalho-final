@@ -105,7 +105,7 @@ export default function List({ results, params }) {
   }
 
   function handleClickDetail(id: number) {
-    router.push(`/pokemon/detail/${id}`);
+    Router.push(`/pokemon/detail/${id}`);
   }
 }
 
