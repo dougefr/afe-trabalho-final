@@ -1,6 +1,6 @@
 import { Badge, Button, Container } from "../../../components";
 import styled from "styled-components";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import { PokemonService } from "../../../services";
 
 import Image from "next/image";
@@ -76,7 +76,8 @@ const StyledButtonContainer = styled.div`
 `;
 
 export default function List({ pokemon }) {
-  const { id } = Router.query;
+  const router = useRouter();
+  const { id } = router.query;
 
   if (!pokemon) {
     return null;
