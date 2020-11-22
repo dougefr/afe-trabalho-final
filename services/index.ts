@@ -1,7 +1,4 @@
-import PokemonService, {
-  IPokemonList,
-  IPokemonDetail,
-} from "./PokemonService11";
+import PokemonService, { IPokemonList, IPokemonDetail } from "./PokemonService";
 
 export type { IPokemonList, IPokemonDetail };
 
