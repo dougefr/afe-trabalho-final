@@ -86,7 +86,10 @@ export default class PokemonService {
     pokemon.species.text = specie.flavor_text_entries.filter(
       (t) => t.language.name === "en"
     )[0].flavor_text;
-    pokemon.species.text = pokemon.species.text.replaceAll(/[^\w\d\,\.]/g, " ");
+    pokemon.species.text = pokemon.species.text.replaceAll(
+      /[^\w\d\,\.A-zÀ-ú\?\!]/g,
+      " "
+    );
 
     return pokemon;
   }
