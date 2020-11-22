@@ -75,8 +75,8 @@ const StyledButtonContainer = styled.div`
   justify-content: flex-end;
 `;
 
-export default function List({ pokemon, params }) {
-  const { id } = params;
+export default function List({ pokemon }) {
+  const { id } = Router.query;
 
   if (!pokemon) {
     return null;

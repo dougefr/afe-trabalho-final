@@ -37,8 +37,8 @@ const StyledButtonContainer = styled.div`
   justify-content: space-between;
 `;
 
-export default function List({ results, params }) {
-  const { page } = params;
+export default function List({ results }) {
+  const { page } = Router.query;
   const headers = ["#", "Pokémon", "Actions"];
 
   if (!results) {
