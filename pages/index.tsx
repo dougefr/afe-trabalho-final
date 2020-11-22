@@ -54,7 +54,7 @@ export default function Home() {
   );
 
   function handleClickStart() {
-    Router.push("/pokemon/list/0");
+    document.location.href = "/pokemon/list/0";
   }
 
   function handleClickExit() {

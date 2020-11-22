@@ -185,16 +185,16 @@ export default function List({ pokemon }) {
   }
 
   function handleClientPrevious() {
-    Router.push(`/pokemon/detail/${parseInt("" + id) - 1}`);
+    document.location.href = `/pokemon/detail/${parseInt("" + id) - 1}`;
   }
 
   function handleClickNext() {
-    Router.push(`/pokemon/detail/${parseInt("" + id) + 1}`);
+    document.location.href = `/pokemon/detail/${parseInt("" + id) + 1}`;
   }
 
   function handleClickList() {
     const page = Math.floor(parseInt("" + id) / 10);
-    Router.push(`/pokemon/list/${page}`);
+    document.location.href = `/pokemon/list/${page}`;
   }
 
   function renderImage() {

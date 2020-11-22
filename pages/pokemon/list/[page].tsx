@@ -37,6 +37,21 @@ const StyledButtonContainer = styled.div`
   justify-content: space-between;
 `;
 
+const StyledImageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const StyledDiv = styled.div`
+  width: 64px;
+  height: 64px;
+  min-width: 64px;
+  min-height: 64px;
+  max-width: 64px;
+  max-height: 64px;
+`;
+
 export default function List({ results }) {
   const router = useRouter();
   const { page } = router.query;
@@ -70,10 +85,10 @@ export default function List({ results }) {
           headers={headers}
           data={results.map((r) => [
             r.id,
-            <>
+            <StyledImageContainer>
               {renderImage(r.sprite)}
               {r.name}
-            </>,
+            </StyledImageContainer>,
             renderDetailButton(r.id),
           ])}
         />
@@ -82,19 +97,23 @@ export default function List({ results }) {
   );
 
   function handleClientPrevious() {
-    Router.push(`/pokemon/list/${parseInt("" + page) - 1}`);
+    document.location.href = `/pokemon/list/${parseInt("" + page) - 1}`;
   }
 
   function handleClickNext() {
-    Router.push(`/pokemon/list/${parseInt("" + page) + 1}`);
+    document.location.href = `/pokemon/list/${parseInt("" + page) + 1}`;
   }
 
   function handleClickHome() {
-    Router.push("/");
+    document.location.href = "/";
   }
 
   function renderImage(sprite: string) {
-    return <Image width={64} height={64} src={sprite} />;
+    return (
+      <StyledDiv>
+        <Image width={64} height={64} src={sprite} />
+      </StyledDiv>
+    );
   }
 
   function renderDetailButton(id: number) {
@@ -106,7 +125,7 @@ export default function List({ results }) {
   }
 
   function handleClickDetail(id: number) {
-    Router.push(`/pokemon/detail/${id}`);
+    document.location.href = `/pokemon/detail/${id}`;
   }
 }
 
