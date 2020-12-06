@@ -22,9 +22,19 @@ A performance do React foi um ponto crucial para a escolha da biblioteca, pois s
 
 ##### Comunidade
 
-O React é mantido pelo Facebook ou por desenvolvedores individuais ou de empresas. Hoje contando com um suporte muito grande da comunidade de desenvolvimento contando com 160k de estrelas no github e com 1,523 contribuintes e dentro de aproximadamente 5,1 milhões de projetos confirmados pelo "badge" usado por do Github. Comparado ao Vue, o React contém um número menor de estrelas no github, mas é mantida por mais pessoas da comunidade. Abaixo segue um gráfico comparado a quantidade de estrelas do repositórios das três tecnologias.
+O React é mantido pelo Facebook ou por desenvolvedores individuais ou de empresas. Hoje contando com um suporte muito grande da comunidade de desenvolvimento contando com 160k de estrelas no github e com 1,523 contribuintes e dentro de aproximadamente 5,1 milhões de projetos confirmados pelo "badge" usado por do Github. Comparado ao Vue, o React contém um número menor de estrelas no github, mas é mantida por mais pessoas da comunidade. Abaixo segue um gráfico comparado a quantidade de estrelas do repositórios das três tecnologias:
 
-![Gráficos ](https://github.com/dougefr/afe-trabalho-final/blob/master/images/graficos.PNG?raw=true)
+![Github Stars](https://github.com/dougefr/afe-trabalho-final/blob/master/images/starsGit.png?raw=true)
+
+Conforme demonstrado na imagem abaixo, são dados da npm trends contando o número de instalações de cada um:
+
+![NPM Trends](https://github.com/dougefr/afe-trabalho-final/blob/master/images/npmTrends.png?raw=true)
+
+Abaixo o gráfico de pesquisas referente a cada um:
+
+![Google Trends](https://github.com/dougefr/afe-trabalho-final/blob/master/images/googleTrends.png?raw=true)
+
+##### Mercado
 
 TODO explicar as vantagens de se utilizar react: performance, comunidade (levantar números como estrelas no github, google trends, e comparar com demais), mercado (levantar número de vagas no linkedin e número de pessoas que sabem).
 
