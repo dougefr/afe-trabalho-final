@@ -8,19 +8,19 @@
 
 **Alunos:** Douglas Eric Fonseca Rodrigues e Luciano Custódio da Silva Junior
 
-## Trabalho final
+## Trabalho Final
 
 ### Justificativas das decisões arquiteturais tomadas para este projeto:
 
-#### ReactJS
+#### react
 
 A escolha do React para o desenvolvimento da aplicação final, foi dado para aproveitar o know-how dos integrantes do grupo com a tecnologia. A seguir é descrito os principais pontos relevantes considerados para o uso da mesma.
 
-##### Perfomance
+##### perfomance
 
 A performance do React foi um ponto crucial para a escolha da biblioteca, pois seu algoritmo de manipulação do DOM é extremamente leve e integrado as versões mais atuais do ECMA Script, fornecendo um amplo suporte a modularização e classes. Além de deixar a aplicação robusta e com facilidade de incluir novas features.
 
-##### Comunidade
+##### comunidade
 
 O React é mantido pelo Facebook ou por desenvolvedores individuais ou de empresas. Hoje contando com um suporte muito grande da comunidade de desenvolvimento contando com 160k de estrelas no github e com 1,523 contribuintes e dentro de aproximadamente 5,1 milhões de projetos confirmados pelo "badge" usado por do Github. Comparado ao Vue, o React contém um número menor de estrelas no github, mas é mantida por mais pessoas da comunidade. Abaixo segue um gráfico comparado a quantidade de estrelas do repositórios das três tecnologias:
 
@@ -34,25 +34,25 @@ Abaixo o gráfico de pesquisas referente a cada um:
 
 ![Google Trends](https://github.com/dougefr/afe-trabalho-final/blob/master/images/googleTrends.png?raw=true)
 
-#### NextJS
+#### next
 
-O NextJS foi
+Optamos por desenvolver uma aplicação baseada em Server Side Rendering(SSR), e a ferramenta que utilizamos foi o NextJS. O uso do NextJS é efetuado para rastrear as "rotas" referente a página inicial, que inclui a listas de dados recuperados e a página de detalhes referente ao item selecionado. Além do fato do NextJS oferecer uma curva de aprendizado baixa, pois compartilha de muitos módulos presentes no ReactJS.
 
 #### styled-components
 
-TODO explicar as vantagens de se utilizar CSS-in-JS
+Efetuamos o uso do CSS-in-JS no projeto, uma forma de escrita para CSS totalmente voltada para React, tem como a característica efetuar a componentização utilizando o JavaScript para converter em componentes de alta performance com a prevenção de ocorrer colisões entre estilos. Outra característica é proporcionar a adaptação de estilos baseados em parâmetros, sendo assim reduzindo a duplicidade de código. Redução de requisições http para carregamento de assets. A escolha do Styled-Components foi baseada em oferecer a simplificação, de incluir estilos mais dinânico na aplicação, evitando a criar arquivos extras de CSS para criar apenas uma classe de estilo.
 
 #### typescript
 
-TODO explicar as vantagens
+O Typescript é uma ferramenta que tem como o intuito incluir uma tipagem estática ao JavaScript, com essa ferramenta os erros em tempo de desenvolvimento são descobertos com maior facilidade. Sendo assim tornando o JavaScript uma linguagem fortemente tipada. A inclusão da tecnologia no projeto tem como justificativa nós proporcionar ferramentas, para manter a aplicação segura e eficaz.
 
 #### axios
 
-Biblioteca amplamente utilizada para realizar requisições HTTP.
+Biblioteca amplamente utilizada para realizar requisições HTTP, ela é totalmente baseada em Promises. É um projeto open source, disponível no Github, com 7 aproximadamente 79 mil estrelas e 7,5 mil forks. Hoje é vem sendo bem mantida pela comunidade, por ser uma ferramenta que é amplamente utilizada pela comunidade, sua escolha é baseada no suporte oferecido pela comunidade.
 
 #### nes.css
 
-TODO
+O nes.css é uma framework para o css, que agrega ao projeto as estilizações referente ao estilo 8-bits, tais como button e fonts. Na aplicação o framework, é utilizada os componentes declarados anteriormente.
 
 #### husky
 
