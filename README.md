@@ -34,13 +34,9 @@ Abaixo o gráfico de pesquisas referente a cada um:
 
 ![Google Trends](https://github.com/dougefr/afe-trabalho-final/blob/master/images/googleTrends.png?raw=true)
 
-##### Mercado
+#### NextJS
 
-TODO explicar as vantagens de se utilizar react: performance, comunidade (levantar números como estrelas no github, google trends, e comparar com demais), mercado (levantar número de vagas no linkedin e número de pessoas que sabem).
-
-#### next
-
-TODO explicar as vantagens de se utilizar SSR
+O NextJS foi
 
 #### styled-components
 
