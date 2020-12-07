@@ -28,7 +28,7 @@ O React é mantido pelo Facebook ou por desenvolvedores individuais ou de empres
 
 Conforme demonstrado na imagem abaixo, são dados da npm trends contando o número de instalações de cada um:
 
-![NPM Trends](https://github.com/dougefr/afe-trabalho-final/blob/master/images/npmTrends.png?raw=true)
+![NPM Trends](https://github.com/dougefr/afe-trabalho-final/blob/master/images/npmTrends1.png?raw=true)
 
 Abaixo o gráfico de pesquisas referente a cada um:
 
