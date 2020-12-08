@@ -48,16 +48,16 @@ O Typescript é uma ferramenta que tem como o intuito incluir uma tipagem estát
 
 #### axios
 
-Biblioteca amplamente utilizada para realizar requisições HTTP, ela é totalmente baseada em Promises. É um projeto open source, disponível no Github, com 7 aproximadamente 79 mil estrelas e 7,5 mil forks. Hoje é vem sendo bem mantida pela comunidade, por ser uma ferramenta que é amplamente utilizada pela comunidade, sua escolha é baseada no suporte oferecido pela comunidade.
+Biblioteca amplamente utilizada para realizar requisições HTTP, ela é totalmente baseada em Promises. É um projeto open source, disponível no Github, com 7 aproximadamente 79 mil estrelas e 7,5 mil forks. Hoje é vem sendo bem mantida pela comunidade, por ser uma ferramenta que é amplamente utilizada pela comunidade, sua escolha é baseada no suporte oferecido pela comunidade. Na aplicação utilizamos o axios para efetuar requisições a api.
 
 #### nes.css
 
-O nes.css é uma framework para o css, que agrega ao projeto as estilizações referente ao estilo 8-bits, tais como button e fonts. Na aplicação o framework, é utilizada os componentes declarados anteriormente.
+O nes.css é uma framework voltado para o CSS, ele provém para a aplicação apenas o componentes para guia de estilos. Foi utilizado para estilizar fontes, botões e containers onde é exibido informações detalhadas recuperadas na lista.
 
 #### husky
 
-TODO
+O husky é um hook do github, utilizado em conjunto com package.json. Como o husky tem um suporte maior na comunidade, incluimos ele no projeto com o hook para verificar a integridade do commit, antes de efetuar o push.
 
 #### prettier
 
-TODO
+Escolha para formatação do código, para proporcionar uma padronização no código. Utilizado juntamente ao padrão de desenvolvimento do typescript.
