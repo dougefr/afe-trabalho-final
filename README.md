@@ -36,11 +36,11 @@ Abaixo o gráfico de pesquisas referente a cada um:
 
 #### next
 
-Optamos por desenvolver uma aplicação baseada em Server Side Rendering(SSR), e a ferramenta que utilizamos foi o NextJS. O uso do NextJS é efetuado para rastrear as "rotas" referente a página inicial, que inclui a listas de dados recuperados e a página de detalhes referente ao item selecionado. Além do fato do NextJS oferecer uma curva de aprendizado baixa, pois compartilha de muitos módulos presentes no ReactJS.
+Optamos por desenvolver uma aplicação baseada em Server Side Rendering(SSR), e a ferramenta que utilizamos foi o NextJS. O uso do NextJS é efetuado para rastrear as "rotas" referente a página inicial, que inclui a listas de dados recuperados e a página de detalhes referente ao item selecionado. Além do fato do NextJS oferecer uma curva de aprendizado baixa, pois compartilha de muitos módulos presentes no ReactJS. Como nossa aplicação se trata de uma enciclopédia com várias páginas estáticas, é possível gerá-las em tempo de compilação para não termos que consumir a API toda hora e poder permitir que mecanismos de buscas indexem nossas páginas. 
 
 #### styled-components
 
-Efetuamos o uso do CSS-in-JS no projeto, uma forma de escrita para CSS totalmente voltada para React, tem como a característica efetuar a componentização utilizando o JavaScript para converter em componentes de alta performance com a prevenção de ocorrer colisões entre estilos. Outra característica é proporcionar a adaptação de estilos baseados em parâmetros, sendo assim reduzindo a duplicidade de código. Redução de requisições http para carregamento de assets. A escolha do Styled-Components foi baseada em oferecer a simplificação, de incluir estilos mais dinânico na aplicação, evitando a criar arquivos extras de CSS para criar apenas uma classe de estilo.
+Efetuamos o uso do CSS-in-JS no projeto, uma forma de escrita para CSS totalmente voltada para React, tem como a característica efetuar a componentização utilizando o JavaScript para converter em componentes de alta performance, com a prevenção de ocorrer colisões entre estilos. Outra característica é proporcionar a adaptação de estilos baseados em parâmetros, sendo assim reduzindo a duplicidade de código. Redução de requisições http para carregamento de assets. A escolha do Styled-Components foi baseada em oferecer a simplificação, de incluir estilos mais dinânico na aplicação, evitando a criar arquivos extras de CSS para criar apenas uma classe de estilo.
 
 #### typescript
 
@@ -56,7 +56,7 @@ O nes.css é uma framework voltado para o CSS, ele provém para a aplicação ap
 
 #### husky
 
-O husky é um hook do github, utilizado em conjunto com package.json. Como o husky tem um suporte maior na comunidade, incluimos ele no projeto com o hook para verificar a integridade do commit, antes de efetuar o push.
+O husky é uma biblioteca que cria um hook do git. Como o husky tem um suporte maior na comunidade, incluimos ele no projeto com o hook para verificar a integridade do commit, antes de efetuar o push.
 
 #### prettier
 
