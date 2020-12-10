@@ -10,6 +10,8 @@
 
 ## Trabalho Final
 
+Acesso ao projeto em execução: http://afe-trabalho-final.herokuapp.com/
+
 ### Justificativas das decisões arquiteturais tomadas para este projeto:
 
 #### react
